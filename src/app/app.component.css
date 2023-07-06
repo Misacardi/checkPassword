@@ -1,0 +1,78 @@
+ul,
+    ol {
+      padding: 0;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    ul,
+    ol,
+    li,
+    figure,
+    figcaption,
+    blockquote,
+    dl,
+    dd {
+      color: #ffffff
+    }
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .input {
+    width: 200px;
+    border-radius: 10px;
+    transition: 0.5s;
+    height: 40px;
+    padding: 10px;
+    border: 2px solid;
+
+    outline: none;
+  }
+  
+  .input:focus {
+    width: 400px;
+    border-color: rgb(207, 88, 88);
+  } 
+  
+
+
+  .field {
+    list-style: none;
+    display: flex;
+    column-gap: 20px;
+  }
+
+
+.field__item {
+  background-color: rgb(185, 178, 178);
+  padding: 10px 20px;
+    border-radius: 10px;
+    transition: .4s;
+    border: 1px solid #000;
+}
+
+.easy li:first-child  {
+  background-color: rgb(168, 81, 81) ;
+}
+
+.medium li:nth-child(-n+2){
+  background-color: rgb(212, 212, 131) ;
+}
+
+.hard li{
+  background-color: rgb(61, 121, 61) ;
+}
+.more li {
+  background-color: rgb(168, 81, 81) ;
+}
+
