@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { PasswordService } from './password.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,43 +11,22 @@ import { Component } from '@angular/core';
 export class AppComponent {
   text = '';
   difficulty = '';
-  result = 'Enter your password';
-
+  result = ''
+  constructor(private passwordService: PasswordService) { }
   checkString() {
-    const hasLetters = /[a-zA-Z]/.test(this.text);
-    const hasDigits = /\d/.test(this.text);
-    const hasSymbols = /[\W_]/.test(this.text);
+    this.difficulty = this.passwordService.checkPasswordComplexity(this.text);
 
-    if (!this.text.length) {
-      this.difficulty = '';
-      this.result = 'Enter your password';
-      return;
+
+    switch (this.difficulty) {
+      case '2':
+        this.difficulty = 'medium';
+        break;
+      case '3':
+        this.difficulty = 'hard';
+        break;
+      case '1':
+        this.difficulty = 'easy';
     }
-
-    if (this.text.length <= 7) {
-      this.difficulty = 'more';
-      this.result = 'Enter more characters';
-      return;
-    }
-
-
-   
-    const key = (hasLetters ? 1 : 0) + (hasDigits ? 1 : 0) + (hasSymbols ? 1 : 0);
-    
-    let level: string = '';
-
-    switch (key) {
-      case 2: level = 'medium'
-      break
-      case 3: level = 'hard'
-      break;
-      default: level = 'easy'
-    }
-
-
-
-    this.difficulty = level;
-    this.result = level === 'hard' ? 'Strong password' : level === 'medium' ? 'Medium password' : 'Your password is too easy';
   }
 }
 
